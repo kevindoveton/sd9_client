@@ -1,38 +1,39 @@
 {
-  "name": "sd9server",
-  "version": "0.0.1",
-  "description": "A middle man for the SD9 console, providing multiple clients access",
-  "main": "app.js",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-data": "^1.2.0",
-    "gulp-pug": "^3.0.3",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^2.0.0",
-    "main-bower-files": "^2.13.1",
-    "pump": "^1.0.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"Error: no main file\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kevindoveton/digiconode.git"
-  },
-  "keywords": [
-    "sd9",
-    "digico"
-  ],
-  "author": "Kevin Doveton",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kevindoveton/digiconode/issues"
-  },
-  "homepage": "https://github.com/kevindoveton/digiconode#readme"
+	"name": "sd9server",
+	"version": "0.0.1",
+	"description": "A middle man for the SD9 console, providing multiple clients access",
+	"main": "app.js",
+	"dependencies": {
+
+	},
+	"devDependencies": {
+		"gulp": "^3.9.0",
+		"gulp-autoprefixer": "^3.1.1",
+		"gulp-concat": "^2.6.1",
+		"gulp-data": "^1.2.0",
+		"gulp-pug": "^3.0.3",
+		"gulp-sass": "^2.0.4",
+		"gulp-sourcemaps": "^2.6.0",
+		"gulp-uglify": "^2.0.0",
+		"main-bower-files": "^2.13.1",
+		"pump": "^1.0.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "echo \"Error: no main file\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kevindoveton/digiconode.git"
+	},
+	"keywords": [
+		"sd9",
+		"digico"
+	],
+	"author": "Kevin Doveton",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/kevindoveton/digiconode/issues"
+	},
+	"homepage": "https://github.com/kevindoveton/digiconode#readme"
 }
