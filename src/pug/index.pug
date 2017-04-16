@@ -2,20 +2,27 @@ doctype html
 html(ng-app="DigiControl")
 	head
 		meta(charset="utf-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1")
+		meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width")
+
 		//- iOS Full screen
 		meta(name="apple-mobile-web-app-capable", content="yes")
 		meta(name="apple-mobile-web-app-status-bar-style", content="black")
 
 		//- CSS
-		link(rel="stylesheet", href="/static/css/dist.css")
+		link(rel="manifest", href="manifest.json")
+		link(rel="stylesheet", href="css/dist.css")
 
 		//- JS
-		script(src="/static/js/vendor.js")
-		script(src="/static/js/dist.js")
+		script(src="js/vendor.js")
+		script(src="js/dist.js")
+		script(src="cordova.js")
 
 		//- Web sockets
-		script(src="/socket.io/socket.io.js")
+		//- script(src="/socket.io/socket.io.js")
+		//- <script src="/bower_components/socket.io-client/socket.io.js"></script>
+
 
 	body(ng-controller='AppCtrl')
-		ui-view
+		ion-pane
+			ion-content
+				ui-view

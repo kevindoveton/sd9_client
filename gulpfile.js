@@ -14,7 +14,7 @@ var gulp = require('gulp'),
   concat = require('gulp-concat');
 
 var paths = new function() {
-	this.base_dist = './build/';
+	this.base_dist = './www/';
 	this.css = this.base_dist + 'css/';
 	this.js_dist = this.base_dist + 'js/';
 	this.html_dist = this.base_dist + 'html/';
@@ -34,7 +34,7 @@ gulp.task('pug', function (cb) {
 	pump([
 		gulp.src(paths.pug + '**/*.pug'),
 		pug(),
-		gulp.dest(paths.html_dist)
+		gulp.dest(paths.base_dist)
 	], function(e) {
 		if (e !== undefined)
 		{
@@ -94,7 +94,7 @@ gulp.task('vendor_js', function(cb) {
 			}
 			cb(null);
 		});
-		
+
 		return;
 })
 
@@ -105,7 +105,7 @@ gulp.task('vendor_js', function(cb) {
  */
 gulp.task('sass', function (cb) {
 	pump([
-		gulp.src(paths.sass + '**/*.sass'),
+		gulp.src([('!'+paths.sass+'includes/'), paths.sass + '**/*.sass']),
 		sass({
 			includePaths: [paths.sass],
 			outputStyle: 'compressed'
@@ -138,13 +138,13 @@ gulp.task('sass', function (cb) {
  */
 gulp.task('watch', function () {
 	gulp.watch(paths.sass + '**/*.sass', ['sass']);
-	gulp.watch(paths.pug + '**/*.pug', ['pug']);
+	gulp.watch(paths.base_build + '**/*.pug', ['pug']);
 	gulp.watch(paths.js_build + '**/*.js', ['js']);
 	gulp.watch(paths.bower + '**/*.js', ['vendor_js']);
 });
 
 // Build task compile sass and pug.
-gulp.task('build', ['sass', 'pug', 'js']);
+gulp.task('build', ['sass', 'pug', 'js', 'vendor_js']);
 
 /**
  * Default task, running just `gulp` will compile the sass,
