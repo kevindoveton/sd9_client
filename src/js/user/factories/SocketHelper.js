@@ -1,43 +1,77 @@
 angular.module('DigiControl').factory('SocketHelper', function(socket) {
-	socket.on('connect', function() {
-		socket.emit('subscribe', "announcements");
-		socket.emit('subscribe', 'engineer');
-		socket.emit('subscribe', 'name/input')
-		socket.emit('subscribe', 'name/aux')
-		socket.emit('subscribe', "volume/aux");
-		socket.emit('subscribe', "mute/input");
-	});
-	
-	
 	// request input mutes
 	// setInterval(function() {
-	// 	socket.emit("request", "inputMutes");
+	// 	Socket.emit("request", "inputMutes");
 	// }, 20000);
-	
+
+	var Socket = null;
+	var connected = false;
+
 	return {
-		RequestConfig: function() {	
-			socket.emit('request', 'consoleConfig')
+		Connect: function(url, port) {
+			// initialise
+			Socket = socket.init(url, port)
+
+			Socket.on('connect', function() {
+				Socket.emit('subscribe', "announcements");
+				Socket.emit('subscribe', 'engineer');
+				Socket.emit('subscribe', 'name/input');
+				Socket.emit('subscribe', 'name/aux');
+				Socket.emit('subscribe', "volume/aux");
+				Socket.emit('subscribe', "mute/input");
+			});
+
+			this.Connected = true;
 		},
-		
+
+		Connected: false, // false by default
+
+		RequestConfig: function() {
+			if (Socket != null) {
+				Socket.emit('request', 'consoleConfig');
+			} else {
+				return false;
+			}
+		},
+
 		RequestAuxVolume: function() {
-			socket.emit('request', 'inputAuxLevelVolume');
+			if (Socket != null) {
+				Socket.emit('request', 'inputAuxLevelVolume');
+			} else {
+				return false;
+			}
 		},
-		
+
 		RequestInputNames: function() {
-			socket.emit('subscribe', 'name/input')
-			socket.emit('request', 'inputNames')
+			if (Socket != null) {
+				Socket.emit('request', 'inputNames');
+			} else {
+				return false;
+			}
 		},
-		
+
 		RequestAuxNames: function() {
-			socket.emit('request', 'auxNames')
+			if (Socket != null) {
+				Socket.emit('request', 'auxNames');
+			} else {
+				return false;
+			}
 		},
-		
+
 		SetAuxVolume: function(aux, channel, volume) {
-			socket.emit('volume/aux', JSON.stringify({a:aux, c:channel, v:volume}))
+			if (Socket != null) {
+				Socket.emit('volume/aux', JSON.stringify({a:aux, c:channel, v:volume}));
+			} else {
+				return false;
+			}
 		},
-		
+
 		SoloAux: function(aux, value) {
-			socket.emit('auxsolo', aux);
+			if (Socket != null) {
+				Socket.emit('auxsolo', aux);
+			} else {
+				return false;
+			}
 		}
 	};
 });

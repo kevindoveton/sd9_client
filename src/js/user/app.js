@@ -40,6 +40,13 @@ angular.module('DigiControl', [
 		controller: 'EngSelectCtrl'
 	});
 
+	$stateProvider.state({
+		name: 'fbselect',
+		url: '/fbselect',
+		templateUrl: 'templates/fbselect.html',
+		controller: 'FoldbackSelectCtrl'
+	})
+
 
 
 	// default route

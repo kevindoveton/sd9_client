@@ -1,8 +1,15 @@
-div.title
-	h1 DigiControl
-	h2 Select your foldback
+div.input
+	input
+	label IP Address
 
-div.app#app
-	div.item(ng-repeat="d in aux" ui-sref="aux({auxId:d.id})")
-		button.btn.btn-primary.btn-lg {{d.name}}
-		
+div.input
+	input
+	label Port
+
+div.item
+	button.btn(ng-click="connect()") Connect
+button(ng-click="search()") Search
+
+ul
+	li(ng-repeat="host in services")
+		p {{host.name}}
