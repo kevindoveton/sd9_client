@@ -14,4 +14,13 @@ ion-view(view-title="home")
 				label.active Port
 
 			div.fbitem
-				button.btn(ng-click="connect()") Connect
+				button(ng-click="connect()") Connect
+
+
+		div.bonjour
+			ul
+				li(ng-repeat="host in services")
+					div.fbitem(ng-click="connect(host)")
+						button {{host.name}}
+				//- li(ng-repeat="host in services")
+					p {{host.name}}

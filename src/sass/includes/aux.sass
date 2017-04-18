@@ -1,20 +1,19 @@
-$faderWidth : 7rem
+@import variables
 
-@import range
+$faderWidth : 4rem
 
 div.faders
 	display: flex
 	align-items: center
-	display: block
+	height: 100vh
 
 .fader
 	position: relative
-	display: inline-block
 	min-width: $faderWidth
 	max-width: $faderWidth
 	margin-left: 1rem
-	margin-right: 2rem
-	display: inline-block
+	margin-right: 1rem
+	display: block
 	box-sizing: border-box
 	height: 80%
 
@@ -25,7 +24,7 @@ div.faders
 	position: absolute
 	top: 0
 	left: 0
-	width: 120%
+	width: 130%
 	z-index: -1
 	border-right: 1px solid transparentize(#666, 0.5)
 
@@ -38,9 +37,6 @@ div.faders
 	text-overflow: ellipsis
 	width: $faderWidth
 	white-space: nowrap
-
-.rangeslider
-	margin-left: 10px
 
 .faderNumbers
 	position: absolute

@@ -1,4 +1,4 @@
-angular.module('DigiControl.controllers').controller('HomeCtrl', function($scope, $state, SocketHelper, $ionicPlatform) {
+angular.module('DigiControl.controllers').controller('HomeCtrl', function($scope, $state, SocketHelper, $ionicPlatform, $interval) {
 
 	$scope.ippattern = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
 	$scope.portpattern = /\d{1,4}/;
@@ -6,23 +6,37 @@ angular.module('DigiControl.controllers').controller('HomeCtrl', function($scope
 	$scope.ip = '192.168.1.201';
 	$scope.port = '8000';
 
-	$scope.connect = function() {
-		if ($scope.ip !== undefined && $scope.port !== undefined) {
-			SocketHelper.Connect($scope.ip, $scope.port);
+	$scope.services = [];
+
+	$scope.connect = function(host) {
+		if (host == undefined) {
+			if ($scope.ip !== undefined && $scope.port !== undefined) {
+				SocketHelper.Connect($scope.ip, $scope.port);
+				$state.go('app.fbselect');
+			}
+		}
+		else {
+			SocketHelper.Connect(host.hostname, host.port);
 			$state.go('app.fbselect');
 		}
 	}
 
-	$scope.search = function() {
-		console.log('search')
+	$interval(function() {
 		var zeroconf = cordova.plugins.zeroconf;
-		console.log(zeroconf);
-		zeroconf.watch('_digicontrol._udp._local.', function(result) {
-			console.log(result.service);
-			$scope.services.push(result.service)
+		zeroconf.watch('_digicontrol._udp.', 'local.', function(result) {
+			var found = false;
+			for (var i = 0; i < $scope.services.length; i++) {
+				if ($scope.services[i].hostname == result.service.hostname) {
+					found = true;
+					break;
+				}
+			}
+			if (!found) {
+				$scope.services.push(result.service)
+			}
 		}, function(e) {
 			console.log('failed', e);
 		});
-	}
+	}, 1000);
 
 });
