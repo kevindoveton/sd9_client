@@ -1,15 +1,17 @@
-div.input
-	input
-	label IP Address
+div.form
+	div.input
+		input
+		label IP Address
 
-div.input
-	input
-	label Port
+	div.input
+		input
+		label Port
 
-div.item
-	button.btn(ng-click="connect()") Connect
-button(ng-click="search()") Search
+	div.item
+		button.btn(ng-click="connect()") Connect
 
-ul
-	li(ng-repeat="host in services")
-		p {{host.name}}
+//- button(ng-click="search()") Search
+//-
+//- ul
+//- 	li(ng-repeat="host in services")
+//- 		p {{host.name}}

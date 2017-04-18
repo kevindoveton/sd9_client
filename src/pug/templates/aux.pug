@@ -1,7 +1,7 @@
 div
 	div#faders.faders
 		div.fader(ng-repeat="d in faders")
-			rzslider(rz-slider-model="d.value" rz-slider-options="{id:d.id,vertical:true,onEnd:SliderEnd,hidePointerLabels:true,hideLimitLabels:true,stepsArray: StepArray}").fader
+			rzslider(rz-slider-model="d.value" rz-slider-options="{id:d.id,onlyBindHandles:true,vertical:true,onEnd:SliderEnd,hidePointerLabels:true,hideLimitLabels:true,stepsArray: StepArray}" ng-class="{mute: d.mute}").fader
 			p.name {{d.name}}
 			div.faderNumbers
 				span +10

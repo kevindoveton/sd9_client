@@ -61,14 +61,13 @@ angular.module('DigiControl.controllers').controller('AuxCtrl', function($scope,
 		}
 	});
 
-	// $scope.$on('socket:name/aux', function (ev, data) {
-	// $socket.on([], $scope, function(data) {
-	// 	data = JSON.parse(data);
-	// 	// $("#js-rangeslider-"+(data.c - 1)).find(".rangeslider__handle").first().toggleClass("mute", !!data.m);
-	// 	// $("#mute-"+data.c).toggleClass("mute", !!data.m);
-	// 	// $("#mute-"+data.c).toggleClass("unmute", !data.m);
-	// });
-	//
+	$scope.$on('socket:mute/input', function (ev, data) {
+		data = JSON.parse(data);
+		$scope.faders[data.c-1].mute = !!data.m;
+		// $("#js-rangeslider-"+(data.c - 1)).find(".rangeslider__handle").first().toggleClass("mute", !!data.m);
+		// $("#mute-"+data.c).toggleClass("mute", !!data.m);
+		// $("#mute-"+data.c).toggleClass("unmute", !data.m);
+	});
 
 	function searchArrayValues(value, array) {
 		if (array.length == 1) {
