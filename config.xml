@@ -1,12 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.digicontrol296220" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>DigiControl</name>
-    <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="you@example.com" href="http://example.com/">
-      Your Name Here
-    </author>
+    <description>An Ionic Framework and Cordova project.</description>
+    <author email="kevindoveton@me.com" href="http://kdoveton.com/">Kevin Doveton</author>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
@@ -45,6 +41,7 @@
         <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
         <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
         <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
+
         <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
         <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
         <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
@@ -57,6 +54,8 @@
         <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
+
+		<preference name="Orientation" value="all" />
     </platform>
     <plugin name="cordova-plugin-zeroconf" spec="~1.2.2" />
 </widget>

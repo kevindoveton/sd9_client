@@ -1,17 +1,17 @@
-div.form
-	div.input
-		input(ng-model='ip' ng-pattern='/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/' placeholder='xxx.xxx.xxx.xxx')
-		label.active IP Address
+ion-view(view-title="home")
+	ion-content()
+		div.title
+			h1 DigiControl
+			//- h2 hel adwja djkahkjdawa wakhjl wdajhk awdjk
 
-	div.input
-		input(value="80")
-		label.active Port
+		div.form
+			div.input
+				input(ng-model='ip' ng-pattern='ippattern' placeholder='xxx.xxx.xxx.xxx' ng-class="{warn: !ip}")
+				label.active IP Address
 
-	div.item
-		button.btn(ng-click="connect()") Connect
+			div.input
+				input(ng-model='port' ng-pattern='portpattern' ng-class='{warn: !port}')
+				label.active Port
 
-//- button(ng-click="search()") Search
-//-
-//- ul
-//- 	li(ng-repeat="host in services")
-//- 		p {{host.name}}
+			div.fbitem
+				button.btn(ng-click="connect()") Connect

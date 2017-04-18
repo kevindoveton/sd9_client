@@ -1,5 +1,5 @@
 doctype html
-html(ng-app="DigiControl")
+html
 	head
 		meta(charset="utf-8")
 		meta(name="viewport", content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width")
@@ -19,7 +19,5 @@ html(ng-app="DigiControl")
 
 		title DigiControl
 
-	body(ng-controller='AppCtrl')
-		ion-pane
-			ion-content
-				ui-view
+	body(ng-app="DigiControl")
+		ion-nav-view

@@ -137,7 +137,7 @@ gulp.task('sass', function (cb) {
  * Watch .pug files run pug-rebuild then reload BrowserSync
  */
 gulp.task('watch', function () {
-	gulp.watch(paths.sass + '**/*.sass', ['sass']);
+	gulp.watch([paths.sass + '**/*.sass', paths.sass + '**/*.scss'], ['sass']);
 	gulp.watch(paths.base_build + '**/*.pug', ['pug']);
 	gulp.watch(paths.js_build + '**/*.js', ['js']);
 	gulp.watch(paths.bower + '**/*.js', ['vendor_js']);

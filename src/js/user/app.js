@@ -13,44 +13,47 @@ angular.module('DigiControl', [
 ]).config(function ($stateProvider, $urlRouterProvider) {
 	// ui router
 	$stateProvider.state({
-		name: 'home',
-		url: '/home',
-		templateUrl: 'templates/home.html',
-		controller: 'HomeCtrl'
-	});
-
-	$stateProvider.state({
-		name: 'aux',
-		url: '/aux/:id',
-		templateUrl: 'templates/aux.html',
-		controller: 'AuxCtrl',
-	});
-
-	$stateProvider.state({
-		name: 'engFaders',
-		url: '/eng/faders/{id:int}',
-		templateUrl: 'templates/eng_faders.html',
-		controller: 'EngFaderCtrl',
+		name: 'app',
+		url: '/app',
+		abstract: true,
+		controller: 'AppCtrl',
+		templateUrl: 'templates/base.html'
 	})
 
-	$stateProvider.state({
-		name: 'eng',
-		url: '/eng/select',
-		templateUrl: 'templates/eng_select.html',
-		controller: 'EngSelectCtrl'
+	$stateProvider.state('app.home', {
+		url: '/home',
+		views: {
+			'content': {
+				templateUrl: 'templates/home.html',
+				controller: 'HomeCtrl'
+			}
+		}
 	});
 
-	$stateProvider.state({
-		name: 'fbselect',
+	$stateProvider.state('app.aux', {
+		url: '/aux/:id',
+		views: {
+			'content': {
+				templateUrl: 'templates/aux.html',
+				controller: 'AuxCtrl',
+			}
+		}
+	});
+
+	$stateProvider.state('app.fbselect', {
 		url: '/fbselect',
-		templateUrl: 'templates/fbselect.html',
-		controller: 'FoldbackSelectCtrl'
+		views: {
+			'content': {
+				templateUrl: 'templates/fbselect.html',
+				controller: 'FoldbackSelectCtrl'
+			}
+		}
 	})
 
 
 
 	// default route
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/app/home');
 
 	// localStorageServiceProvider.setPrefix('DigiControl');
 	// localStorageServiceProvider.setStorageCookie(10*365, '/', false); // expire in ten years

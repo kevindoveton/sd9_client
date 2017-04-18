@@ -1,7 +1,8 @@
-div.title
-	h1 DigiControl
-	h2 Select your foldback
+ion-view(view-title="fbselect")
+	ion-content
+		div.title
+			h1 DigiControl
+			h2 Select your foldback
 
-div.app#app
-	div.item(ng-repeat="d in aux" ui-sref="aux({id:d.id})")
-		button.btn.btn-primary.btn-lg {{d.name}}
+		div.fbitem(ng-repeat="d in aux" ui-sref="app.aux({id:d.id})")
+			button {{d.name}}

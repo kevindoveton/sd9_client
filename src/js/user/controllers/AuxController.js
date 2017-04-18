@@ -47,7 +47,7 @@ angular.module('DigiControl.controllers').controller('AuxCtrl', function($scope,
 		data = JSON.parse(data);
 		if (data["name"] == "consoleConfig") {
 			for (var i = 1; i <= data.channelInputs; i++) {
-				$scope.faders.push({id: i, name: '', value: 0})
+				$scope.faders.push({id: i, name: '', value: 0, mute: false})
 			}
 		}
 	});
@@ -64,9 +64,6 @@ angular.module('DigiControl.controllers').controller('AuxCtrl', function($scope,
 	$scope.$on('socket:mute/input', function (ev, data) {
 		data = JSON.parse(data);
 		$scope.faders[data.c-1].mute = !!data.m;
-		// $("#js-rangeslider-"+(data.c - 1)).find(".rangeslider__handle").first().toggleClass("mute", !!data.m);
-		// $("#mute-"+data.c).toggleClass("mute", !!data.m);
-		// $("#mute-"+data.c).toggleClass("unmute", !data.m);
 	});
 
 	function searchArrayValues(value, array) {
