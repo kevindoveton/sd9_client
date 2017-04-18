@@ -1,13 +1,9 @@
 angular.module('DigiControl.controllers').controller('HomeCtrl', function($scope, $state, SocketHelper, $ionicPlatform) {
-	$scope.services = [
-		{
-			name: 'dhcp'
-		}
-	]
 
 	$scope.connect = function() {
-		SocketHelper.Connect('localhost', 8000);
-		$state.go('fbselect');
+		console.log($scope.ip)
+		// SocketHelper.Connect('localhost', 8000);
+		// $state.go('fbselect');
 	}
 
 	$scope.search = function() {

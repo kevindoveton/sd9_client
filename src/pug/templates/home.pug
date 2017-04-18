@@ -1,11 +1,11 @@
 div.form
 	div.input
-		input
-		label IP Address
+		input(ng-model='ip' ng-pattern='/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/' placeholder='xxx.xxx.xxx.xxx')
+		label.active IP Address
 
 	div.input
-		input
-		label Port
+		input(value="80")
+		label.active Port
 
 	div.item
 		button.btn(ng-click="connect()") Connect
